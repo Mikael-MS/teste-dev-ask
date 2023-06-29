@@ -3,8 +3,9 @@ const puppeteer = require('puppeteer');
 class BrowserService {
 
     static getBrowser() {
-        return puppeteer.launch({});
+        return puppeteer.launch({headless: true});
     }
+
 
     static closeBrowser(browser) {
         if (!browser) {
