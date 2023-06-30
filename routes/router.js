@@ -1,30 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const BrowserService = require('../services/BrowserService');
+const ScraperPratagyBeach = require('../services/ScraperService');
 
 
 router.get('/', (req, res) => {
-    req.
-    res.send('Hello Mikael!');
+    res.send('Thank you Asksuit!');
 });
 
-//TODO implement endpoint here
+
 router.post('/search', async (req, res) => {
     const checkin = req.body.checkin;
     const checkout = req.body.checkout;
 
-    if(!checkin || !checkout) {
-        res.status(400).send({error:'Missing checkin or checkout'})
+    if(!checkin){
+        res.status(400).send({error:'Checkin date not found!'})
+        return
+    }
+
+    if(!checkout) {
+        res.status(400).send({error:'Checkout date not found!'})
         return
     }
 
     const browser = await BrowserService.getBrowser()
 
-    const result = await BrowserService.scraperPratagyBeach(checkin, checkout, browser);
+    const rooms = await ScraperPratagyBeach.scraperPratagyBeach(checkin, checkout, browser);
     
     BrowserService.closeBrowser(browser);
 
-    res.status(200).send(result)
+    res.status(200).send(rooms)
 });
 
 module.exports = router;
