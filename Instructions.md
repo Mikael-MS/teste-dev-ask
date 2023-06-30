@@ -2,7 +2,7 @@
 
 Some instructions to be able to test the project:
 
-## Installed libraries:
+## Extra libraries installed:
 * axios
 * moment.js
 
@@ -19,5 +19,5 @@ Some instructions to be able to test the project:
 ## In another terminal run the command
 
 ```bash
-    npm start
+    npm run client
 ```

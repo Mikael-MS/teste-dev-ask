@@ -5,7 +5,7 @@ const ScraperPratagyBeach = require('../services/ScraperService');
 
 
 router.get('/', (req, res) => {
-    res.send('Thank you Asksuit!');
+    res.send('Thank you Asksuite!');
 });
 
 
@@ -14,12 +14,12 @@ router.post('/search', async (req, res) => {
     const checkout = req.body.checkout;
 
     if(!checkin){
-        res.status(400).send({error:'Checkin date not found!'})
+        res.status(400).send({error:'Checkin date is required!'})
         return
     }
 
     if(!checkout) {
-        res.status(400).send({error:'Checkout date not found!'})
+        res.status(400).send({error:'Checkin date is required!'})
         return
     }
 

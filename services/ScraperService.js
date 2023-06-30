@@ -35,7 +35,8 @@ class ScraperPratagyBeach {
             for(const room of elementsRooms) {
     
                 const nameElement = room.querySelector('td.tdQuarto > div > div.flex-table-row > span');
-                const nameRoom = nameElement? nameElement.textContent: '';
+                const nameTxt = nameElement? nameElement.textContent: '';
+                const nameRoom = nameTxt.toUpperCase();
                 
     
                 const descriptionElement = room.querySelector('td.tdQuarto > div > div.quartoContent > div > div > p');
@@ -46,15 +47,15 @@ class ScraperPratagyBeach {
                 const dailyPrice = priceElement? priceElement.textContent: '';
                 
     
-                const imagesElements = room.querySelector('td.tdQuarto > div > div.left-col > ul > div.slick-list.draggable > div > li.slick-slide.slick-current.slick-active > img');
-                const imagesRoom = imagesElements? imagesElements.dataset.src: '';
+                const imageElement = room.querySelector('td.tdQuarto > div > div.left-col > ul > div.slick-list.draggable > div > li.slick-slide.slick-current.slick-active > img');
+                const imageRoom = imageElement? imageElement.dataset.src: '';
                 
     
                 roomInformation.push({
                     "name": nameRoom,
                     "description": descriptionRoom,
                     "price": dailyPrice,
-                    "image": imagesRoom
+                    "image": imageRoom
                 });
     
             }

@@ -1,14 +1,18 @@
 const axios = require('axios');
 
-const dates = {
-	"checkin": "2023-07-01", 
-	"checkout": "2023-07-05"
-}
+(async () => {
+    
+    const dates = {
+        "checkin": "2023-07-10",
+        "checkout": "2023-07-15"
+    }
 
-axios.post('http://localhost:8080/search', dates)
-    .then(response => {
+    try {
+        const response = await axios.post('http://localhost:8080/search', dates)
         console.log('Rooms: ', response.data)
-    })
-    .catch(error => {
-        console.log('Error: ', error)
-    })
+
+    } catch (error) {
+        console.log(error)
+    }
+
+})()
