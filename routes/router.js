@@ -19,7 +19,7 @@ router.post('/search', async (req, res) => {
     }
 
     if(!checkout) {
-        res.status(400).send({error:'Checkin date is required!'})
+        res.status(400).send({error:'Checkout date is required!'})
         return
     }
 
